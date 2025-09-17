@@ -2,11 +2,10 @@ import { Link } from "expo-router"
 import { Text, TouchableOpacity, View, StatusBar } from "react-native"
 import { useAuthStore } from "../store/authStore"
 import { useEffect } from "react"
-import { Feather } from "@expo/vector-icons"
-import styles from "../styles/styles.js" // 导入样式
+import styles from "../styles/styles.js"
 
 export default function Index() {
-  const { user, token, checkAuth, LogOut } = useAuthStore()
+  const { user, token, checkAuth } = useAuthStore()
   console.log(user + ", token:" + token)
 
   useEffect(() => {
@@ -35,12 +34,7 @@ export default function Index() {
             </TouchableOpacity>
           </Link>
 
-          {user && (
-            <TouchableOpacity onPress={LogOut} style={styles.logoutButton}>
-              <Feather name="log-out" size={18} color="#fff" style={styles.iconLeft} />
-              <Text style={styles.logoutText}>Logout</Text>
-            </TouchableOpacity>
-          )}
+          
         </View>
       </View>
     </View>

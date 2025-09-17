@@ -95,19 +95,6 @@ export default function Signup() {
             <View style={styles.signupDivider} />
           </View>
 
-          {/* Social Buttons */}
-          <View style={styles.signupSocialRow}>
-            <TouchableOpacity style={styles.signupSocialBtn}>
-              <Feather name="facebook" size={20} color="#1877F2" />
-              <Text style={styles.signupSocialText}>Facebook</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.signupSocialBtn}>
-              <Feather name="github" size={20} color="#000" />
-              <Text style={styles.signupSocialText}>Google</Text>
-            </TouchableOpacity>
-          </View>
-
           {/* Switch to Login */}
           <View style={styles.signupSwitchRow}>
             <Text style={styles.signupSwitchText}>Already have an account? </Text>

@@ -93,7 +93,7 @@ export default function Profile() {
           activeOpacity={0.9}
         >
           <ImageBackground source={{ uri: cover }} style={styles.cardImageBg} imageStyle={styles.cardImage}>
-            {/* 顶部右侧操作：编辑/删除 */}
+           
             <View style={styles.cardTopActions}>
               <TouchableOpacity
                 onPress={() => router.push(`/(tabs)/create?id=${item._id}&isEdit=true`)}
@@ -114,7 +114,7 @@ export default function Profile() {
               </TouchableOpacity>
             </View>
 
-            {/* 标题与分类 */}
+            
             <View style={styles.cardTitleBox}>
               <View style={styles.rowBetween}>
                 <Text style={styles.cardTitle} numberOfLines={1}>
@@ -128,7 +128,7 @@ export default function Profile() {
           </ImageBackground>
         </TouchableOpacity>
 
-        {/* 下方信息区块 */}
+        {/*  */}
         <View style={styles.cardMeta}>
           <Text style={styles.cardNotes} numberOfLines={2}>
             {item?.notes || "No notes provided."}

@@ -318,9 +318,9 @@ signupSocialBtn: {
 },
 signupSocialText: { marginLeft: 8, color: "#333", fontWeight: "500" },
 
-signupSwitchRow: { flexDirection: "row", justifyContent: "center", marginTop: 20 },
+signupSwitchRow: { flexDirection: "row", justifyContent: "center" },
 signupSwitchText: { color: "#666" },
-signupSwitchLink: { color: "#000", fontWeight: "700" },
+signupSwitchLink: { color: "#000", fontWeight: "800" },
 /* ========== Login(登录页, 白底) ========== */
 loginScreen: { flex: 1, backgroundColor: "#fff" },
 scrollContainer: { paddingHorizontal: 24, paddingVertical: 16 },

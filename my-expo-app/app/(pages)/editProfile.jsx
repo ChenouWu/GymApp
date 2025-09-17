@@ -13,12 +13,11 @@ import * as ImagePicker from "expo-image-picker"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { router } from "expo-router"
 import { Feather } from "@expo/vector-icons"
-//
-const API_BASE = "https://bookapp-x3n4.onrender.com"
+
 
 export default function EditProfile() {
   const [username, setUsername] = useState("")
-  const [profileImage, setProfileImage] = useState(null)      // base64 或 url
+  const [profileImage, setProfileImage] = useState(null)  
   const [loading, setLoading] = useState(false)
   const [initializing, setInitializing] = useState(true)
 
@@ -31,7 +30,7 @@ export default function EditProfile() {
           router.replace("/(auth)")
           return
         }
-        const res = await fetch(`${API_BASE}/api/auth/me`, {
+        const res = await fetch(`https://gymapp-ej8y.onrender.com/api/auth/me`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         const data = await res.json()
@@ -77,7 +76,7 @@ export default function EditProfile() {
     try {
       setLoading(true)
       const token = await AsyncStorage.getItem("token")
-      const res = await fetch(`${API_BASE}/api/auth/update`, {
+      const res = await fetch(`https://gymapp-ej8y.onrender.com/api/auth/update`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -57,10 +57,11 @@ export default function WorkoutDetail() {
   const router = useRouter()
   const { user } = useAuthStore()
 
+  
   useEffect(() => {
     const fetchWorkout = async () => {
       try {
-        const res = await fetch(`https://bookapp-x3n4.onrender.com/api/workout/${id}`)
+        const res = await fetch(`https://gymapp-ej8y.onrender.com/api/workout/${id}`)
         const data = await res.json()
         setWorkout(data)
       } catch (err) {
@@ -72,16 +73,7 @@ export default function WorkoutDetail() {
     if (id) fetchWorkout()
   }, [id])
 
-  const handleShare = async () => {
-    try {
-      await Share.share({
-        message: `Check out this workout: ${workout.title} - ${workout.duration} mins`,
-        url: `https://yourapp.com/workout/${id}`,
-      })
-    } catch (error) {
-      console.error("Error sharing workout:", error)
-    }
-  }
+  
 
   const isOwner = user && workout && user._id === workout.user?._id
   const handleEdit = () => router.push(`/(tabs)/create?id=${id}&isEdit=true`)

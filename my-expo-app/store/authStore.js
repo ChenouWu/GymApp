@@ -2,7 +2,6 @@ import { create } from 'zustand';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
 
-const BASE_URL = 'https://gym-socialapp.onrender.com/api';
 
 export const useAuthStore = create((set) => ({
   user: null,
@@ -12,7 +11,7 @@ export const useAuthStore = create((set) => ({
   register: async (username, email, password) => {
     set({ isLoading: true });
     try {
-      const response = await fetch(`${BASE_URL}/auth/register`, {
+      const response = await fetch(`https://gymapp-ej8y.onrender.com/api/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,7 +50,7 @@ export const useAuthStore = create((set) => ({
   LogIn: async (email, password) => {
     set({ isLoading: true });
     try {
-      const response = await fetch(`${BASE_URL}/auth/login`, {
+      const response = await fetch(`https://gymapp-ej8y.onrender.com/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -105,7 +104,7 @@ export const useAuthStore = create((set) => ({
         Authorization: `Bearer ${token}`,
       };
 
-      const response = await fetch(`${BASE_URL}/workout/getmy`, {
+      const response = await fetch(`https://gymapp-ej8y.onrender.com/api/workout/getmy`, {
         method: 'GET',
         headers,
       });
@@ -132,7 +131,7 @@ export const useAuthStore = create((set) => ({
       const token = await AsyncStorage.getItem('token');
       if (!token) throw new Error('Token missing');
 
-      const res = await fetch(`${BASE_URL}/auth/getuser/${id}`, {
+      const res = await fetch(`https://gymapp-ej8y.onrender.com/api/auth/getuser/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',

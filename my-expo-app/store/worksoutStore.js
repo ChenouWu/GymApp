@@ -1,7 +1,8 @@
 import { create } from "zustand";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const BASE_URL = "https://gym-socialapp.onrender.com/api";
+
+const BASE_URL = 'https://gymapp-ej8y.onrender.com/api'
 
 
 const getAuthHeaders = async () => {
@@ -30,7 +31,7 @@ export const useWorksoutStore = create((set, get) => ({
   getEightWorkouts: async () => {
     try {
       const headers = await getAuthHeaders();
-      const data = await fetchJSON(`${BASE_URL}/workout/geteight`, {
+      const data = await fetchJSON(`https://gymapp-ej8y.onrender.com/api/workout/geteight`, {
         method: "GET",
         headers,
       });
@@ -45,7 +46,7 @@ export const useWorksoutStore = create((set, get) => ({
   getSpecificWorkout: async (id) => {
     try {
       const headers = await getAuthHeaders();
-      const data = await fetchJSON(`${BASE_URL}/workout/${id}`, {
+      const data = await fetchJSON(`https://gymapp-ej8y.onrender.com/api/workout/${id}`, {
         method: "GET",
         headers,
       });
@@ -60,12 +61,12 @@ export const useWorksoutStore = create((set, get) => ({
   postWorkout: async (workout) => {
     try {
       const headers = await getAuthHeaders();
-      const data = await fetchJSON(`${BASE_URL}/workout/post`, {
+      const data = await fetchJSON(`https://gymapp-ej8y.onrender.com/api/workout/post`, {
         method: "POST",
         headers,
         body: JSON.stringify(workout),
       });
-      // 可选：把新建的 workout 追加到列表
+      
       set((state) => ({ workouts: [data, ...(state.workouts || [])], workout: data }));
       return data;
     } catch (error) {
@@ -77,13 +78,13 @@ export const useWorksoutStore = create((set, get) => ({
   deleteSpecificWorkout: async (id) => {
     try {
       const headers = await getAuthHeaders();
-      await fetchJSON(`${BASE_URL}/workout/delete/${id}`, {
+      await fetchJSON(`https://gymapp-ej8y.onrender.com/api/workout/delete/${id}`, {
         method: "DELETE",
         headers,
       });
       set((state) => ({
         workouts: (state.workouts || []).filter((w) => w._id !== id),
-        // 如果当前详情就是被删的，也清掉
+      
         workout: state.workout && state.workout._id === id ? null : state.workout,
       }));
     } catch (error) {
@@ -95,13 +96,12 @@ export const useWorksoutStore = create((set, get) => ({
   updateworkout: async (id, updatedWorkout) => {
     try {
       const headers = await getAuthHeaders();
-      const data = await fetchJSON(`${BASE_URL}/workout/update/${id}`, {
+      const data = await fetchJSON(`https://gymapp-ej8y.onrender.com/api/workout/update/${id}`, {
         method: "PUT",
         headers,
         body: JSON.stringify(updatedWorkout),
       });
 
-      // 更新详情与列表
       set((state) => ({
         workout: data,
         workouts: (state.workouts || []).map((w) => (w._id === id ? data : w)),

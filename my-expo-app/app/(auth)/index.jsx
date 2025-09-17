@@ -8,8 +8,8 @@ import {
   Platform,
   ScrollView,
   Image,
-  ActivityIndicator, // 添加 ActivityIndicator
-  Alert // 添加 Alert
+  ActivityIndicator, 
+  Alert 
 } from "react-native"
 import { useState } from "react"
 import styles from "../../styles/styles"
@@ -95,21 +95,21 @@ export default function Login() {
                 <TextInput
                   style={styles.input}
                   placeholder="Enter your password"
-                  placeholderTextColor="#999" // 添加占位符颜色
+                  placeholderTextColor="#999" 
                   secureTextEntry={!showPassword}
                   value={password}
                   onChangeText={setPassword}
-                  editable={!isloading} // 加载时禁用编辑
+                  editable={!isloading} 
                 />
                 <TouchableOpacity 
                   onPress={() => setShowPassword(!showPassword)} 
                   style={styles.eyeIcon}
-                  disabled={isloading} // 加载时禁用按钮
+                  disabled={isloading} 
                 >
                   <Feather 
                     name={showPassword ? "eye" : "eye-off"} 
                     size={20} 
-                    color={isloading ? "#ccc" : "#666"} // 加载时改变颜色
+                    color={isloading ? "#ccc" : "#666"} 
                   />
                 </TouchableOpacity>
               </View>
@@ -117,24 +117,24 @@ export default function Login() {
 
             <TouchableOpacity 
               style={styles.forgotPasswordContainer}
-              disabled={isloading} // 加载时禁用
+              disabled={isloading} 
             >
               <Text style={[styles.forgotPasswordText, isloading && { color: "#ccc" }]}>
                 Forgot Password?
               </Text>
             </TouchableOpacity>
 
-            {/* 登录按钮 - 添加加载指示器 */}
+            
             <TouchableOpacity 
               style={[
                 styles.primaryButton, 
-                isloading && styles.disabledButton // 加载时添加禁用样式
+                isloading && styles.disabledButton 
               ]} 
               onPress={handleLogin}
-              disabled={isloading} // 加载时禁用
+              disabled={isloading} 
             >
               {isloading ? (
-                <ActivityIndicator color="#fff" size="small" /> // 显示加载指示器
+                <ActivityIndicator color="#fff" size="small" /> 
               ) : (
                 <Text style={styles.primaryButtonText}>Log In</Text>
               )}
@@ -146,31 +146,12 @@ export default function Login() {
               <View style={styles.divider} />
             </View>
 
-            {/* 社交登录按钮 */}
-            <View style={styles.socialButtonsContainer}>
-              <TouchableOpacity 
-                style={[styles.socialButton, isloading && { opacity: 0.5 }]}
-                disabled={isloading} // 加载时禁用
-              >
-                <Feather name="facebook" size={20} color="#4267B2" />
-                <Text style={styles.socialButtonText}>Facebook</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity 
-                style={[styles.socialButton, isloading && { opacity: 0.5 }]}
-                disabled={isloading} // 加载时禁用
-              >
-                <Feather name="github" size={20} color="#333" />
-                <Text style={styles.socialButtonText}>Google</Text>
-              </TouchableOpacity>
-            </View>
-
-            {/* 注册链接 */}
+      
             <View style={styles.switchFormContainer}>
               <Text style={styles.switchFormText}>Don't have an account? </Text>
               <TouchableOpacity 
                 onPress={() => router.replace("/(auth)/signup")}
-                disabled={isloading} // 加载时禁用
+                disabled={isloading} 
               >
                 <Text style={[styles.switchFormLink, isloading && { color: "#ccc" }]}>
                   Sign Up
